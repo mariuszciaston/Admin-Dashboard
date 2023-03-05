@@ -1,0 +1,49 @@
+html {
+    background-image: url('dashboard-project.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: contain;
+}
+
+body{ 
+    margin: 0;
+
+}
+
+#container{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: min-content 1fr min-content;
+
+    height: 100vh;
+    /* opacity: 0; */
+}
+
+nav, header, main, footer{
+    display: grid;
+    place-content: center;
+}
+
+
+nav{
+    background-color: lightskyblue;
+    grid-column: 1/2;
+    grid-row: 1/4;
+}
+
+header{
+    background-color: yellow;
+    grid-column: 2/5;
+}
+
+main{
+    background-color: silver;
+    grid-column: 2/5;
+
+}
+
+footer{
+    background-color: grey;
+    grid-column: 2/5;
+}
