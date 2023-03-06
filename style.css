@@ -1,12 +1,27 @@
+:root {
+    --sidebar-min: 32px;
+    --sidebar-max: calc(100%/5);
+
+    --bcg: silver;
+}
+
+html {
+    font-size: 16px;
+}
+
 body {
     margin: 0;
     font-family: Ubuntu, sans-serif;
+    font-size: 1rem;
+    background-color: var(--bcg);
+
 }
 
 #wrapper {
     display: grid;
-    grid-template-columns: minmax(min-content, 1fr) 4fr;
+    grid-template-columns: var(--sidebar-min) 4fr;
     min-height: 100vh;
+    transition: 0.5s ease;
 }
 
 #container {
@@ -17,14 +32,18 @@ body {
 
 nav {
     background-color: lightskyblue;
-    grid-column: 1;
+    grid-column: 1/2;
+    z-index: 1;
+    width: var(--sidebar-min);
+    transition: width 0.5s ease;
 }
 
-#sidebar{
+#sidebar {
     position: sticky;
     top: 0;
     left: 0;
     height: min-content;
+    overflow: hidden;
 }
 
 #sidebar ul {
@@ -33,13 +52,26 @@ nav {
     margin: 0;
 }
 
+.menu-btn {
+    width: var(--sidebar-min);
+    height: var(--sidebar-min);
+}
+
+#wrapper.sidebar-toggle {
+    grid-template-columns: var(--sidebar-min) 4fr;
+}
+
+nav.sidebar-toggle {
+    width: 256px;
+}
+
 header {
     background-color: yellow;
     grid-column: 1/-1;
 }
 
 main {
-    background-color: silver;
+    background-color: var(--bcg);
     grid-column: 1/7;
 }
 
@@ -51,4 +83,29 @@ aside {
 footer {
     background-color: grey;
     grid-column: 1/-1;
+}
+
+@media only screen and (min-width: 1024px) {
+    #wrapper {
+        grid-template-columns: var(--sidebar-max) 4fr;
+    }
+
+    #container {
+        position: relative;
+        margin-left: 0;
+        z-index: 1;
+    }
+
+    #wrapper.sidebar-toggle {
+        grid-template-columns: var(--sidebar-min) 4fr;
+    }
+
+    nav {
+        position: relative;
+        width: 100%;
+    }
+
+    nav.sidebar-toogle {
+        width: var(--sidebar-max);
+    }
 }
