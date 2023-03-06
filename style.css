@@ -1,49 +1,54 @@
-html {
-    background-image: url('dashboard-project.png');
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
-    background-size: contain;
-}
-
-body{ 
+body {
     margin: 0;
-
+    font-family: Ubuntu, sans-serif;
 }
 
-#container{
+#wrapper {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: minmax(min-content, 1fr) 4fr;
+    min-height: 100vh;
+}
+
+#container {
+    display: grid;
+    grid-template-columns: repeat(8, minmax(min-content, 1fr));
     grid-template-rows: min-content 1fr min-content;
-
-    height: 100vh;
-    /* opacity: 0; */
 }
 
-nav, header, main, footer{
-    display: grid;
-    place-content: center;
-}
-
-
-nav{
+nav {
     background-color: lightskyblue;
-    grid-column: 1/2;
-    grid-row: 1/4;
+    grid-column: 1;
 }
 
-header{
+#sidebar{
+    position: sticky;
+    top: 0;
+    left: 0;
+    height: min-content;
+}
+
+#sidebar ul {
+    list-style-type: none;
+    padding: 1rem;
+    margin: 0;
+}
+
+header {
     background-color: yellow;
-    grid-column: 2/5;
+    grid-column: 1/-1;
 }
 
-main{
+main {
     background-color: silver;
-    grid-column: 2/5;
-
+    grid-column: 1/7;
 }
 
-footer{
+aside {
+    background-color: lightcyan;
+    grid-column: span 2/-1;
+}
+
+footer {
     background-color: grey;
-    grid-column: 2/5;
+    grid-column: 1/-1;
 }
