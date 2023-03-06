@@ -72,17 +72,44 @@ header {
 
 main {
     background-color: var(--bcg);
-    grid-column: 1/7;
+    grid-column: 1/-1;
 }
 
 aside {
     background-color: lightcyan;
-    grid-column: span 2/-1;
+    grid-column: 1/-1;
 }
 
 footer {
     background-color: grey;
     grid-column: 1/-1;
+}
+
+@media only screen and (min-width: 512px) {
+
+    nav.sidebar-toggle {
+        width: 256px;
+    }
+
+    header {
+        background-color: yellow;
+        grid-column: 1/-1;
+    }
+
+    main {
+        background-color: var(--bcg);
+        grid-column: 1/7;
+    }
+
+    aside {
+        background-color: lightcyan;
+        grid-column: span 2/-1;
+    }
+
+    footer {
+        background-color: grey;
+        grid-column: 1/-1;
+    }
 }
 
 @media only screen and (min-width: 1024px) {
