@@ -87,10 +87,6 @@ footer {
 
 @media only screen and (min-width: 512px) {
 
-    nav.sidebar-toggle {
-        width: 256px;
-    }
-
     header {
         background-color: yellow;
         grid-column: 1/-1;
@@ -113,10 +109,6 @@ footer {
 }
 
 @media only screen and (min-width: 1024px) {
-    #wrapper {
-        grid-template-columns: var(--sidebar-max) 4fr;
-    }
-
     #container {
         position: relative;
         margin-left: 0;
@@ -124,7 +116,7 @@ footer {
     }
 
     #wrapper.sidebar-toggle {
-        grid-template-columns: var(--sidebar-min) 4fr;
+        grid-template-columns: var(--sidebar-max) 4fr;
     }
 
     nav {
@@ -132,7 +124,7 @@ footer {
         width: 100%;
     }
 
-    nav.sidebar-toogle {
-        width: var(--sidebar-max);
+    nav.sidebar-toggle {
+        width: 100%;
     }
 }
