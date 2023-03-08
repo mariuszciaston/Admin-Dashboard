@@ -1,8 +1,9 @@
 :root {
     --sidebar-min: 32px;
-    --sidebar-max: calc(100%/5);
+    --sidebar-med: 64px;
 
     --bcg: silver;
+    --outside: 16px;
 }
 
 html {
@@ -14,19 +15,21 @@ body {
     font-family: Ubuntu, sans-serif;
     font-size: 1rem;
     background-color: var(--bcg);
-
 }
 
 #wrapper {
     display: grid;
-    grid-template-columns: var(--sidebar-min) 4fr;
+    grid-template-columns: var(--sidebar-med) 4fr;
     min-height: 100vh;
     transition: 0.5s ease;
 }
 
+#wrapper.sidebar-toggle {
+    grid-template-columns: var(--sidebar-med) 4fr;
+}
+
 #container {
     display: grid;
-    grid-template-columns: repeat(8, minmax(min-content, 1fr));
     grid-template-rows: min-content 1fr min-content;
 }
 
@@ -34,13 +37,18 @@ nav {
     background-color: lightskyblue;
     grid-column: 1/2;
     z-index: 1;
+    padding: var(--outside);
     width: var(--sidebar-min);
-    transition: width 0.5s ease;
+    transition: 0.5s ease;
+}
+
+nav.sidebar-toggle {
+    width: 256px;
 }
 
 #sidebar {
     position: sticky;
-    top: 0;
+    top: var(--outside);
     left: 0;
     height: min-content;
     overflow: hidden;
@@ -48,83 +56,109 @@ nav {
 
 #sidebar ul {
     list-style-type: none;
-    padding: 1rem;
+    padding: 0;
     margin: 0;
 }
 
 .menu-btn {
-    width: var(--sidebar-min);
-    height: var(--sidebar-min);
-}
-
-#wrapper.sidebar-toggle {
-    grid-template-columns: var(--sidebar-min) 4fr;
-}
-
-nav.sidebar-toggle {
-    width: 256px;
+    width: 32px;
+    height: 32px;
 }
 
 header {
     background-color: yellow;
     grid-column: 1/-1;
+    padding: var(--outside);
 }
 
 main {
     background-color: var(--bcg);
-    grid-column: 1/-1;
+    padding: var(--outside);
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: var(--outside);
 }
 
-aside {
-    background-color: lightcyan;
-    grid-column: 1/-1;
+.primary {
+    display: grid;
+    grid-column: 1 / -1;
+    gap: var(--outside);
+}
+
+.secondary {
+    display: grid;
+    grid-column: 1 / -1;
+    gap: var(--outside);
+}
+
+.card,
+.misc {
+    display: grid;
+    border: 1px solid black;
+    border-radius: 8px;
+    background-color: antiquewhite;
+
+    padding: var(--outside);
 }
 
 footer {
     background-color: grey;
     grid-column: 1/-1;
+    padding: var(--outside);
 }
 
 @media only screen and (min-width: 512px) {
-
+    
     header {
-        background-color: yellow;
         grid-column: 1/-1;
     }
-
+    
     main {
-        background-color: var(--bcg);
-        grid-column: 1/7;
+        grid-column: 1/-1;
     }
-
-    aside {
-        background-color: lightcyan;
-        grid-column: span 2/-1;
+    
+    .primary {
+        grid-template-columns: repeat(2, 1fr);
+        grid-column: 1 / -1;
+    }
+    .secondary {
+        grid-template-columns: repeat(2, 1fr);
+        grid-column: 1 / -1;
     }
 
     footer {
-        background-color: grey;
         grid-column: 1/-1;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .primary {
+        grid-column: 1 / span 6;
+    }
+    .secondary {
+        grid-template-columns: 1fr;
+        grid-column: span 2 / -1;
     }
 }
 
 @media only screen and (min-width: 1024px) {
+
+    #wrapper.sidebar-toggle {
+        grid-template-columns: 20% 4fr;
+    }
+
+    nav {
+        width: unset;
+        transition: none;
+    }
+
+    nav.sidebar-toggle {
+        width: calc(100% - 32px);
+    }
+
     #container {
         position: relative;
         margin-left: 0;
         z-index: 1;
-    }
-
-    #wrapper.sidebar-toggle {
-        grid-template-columns: var(--sidebar-max) 4fr;
-    }
-
-    nav {
-        position: relative;
-        width: 100%;
-    }
-
-    nav.sidebar-toggle {
-        width: 100%;
     }
 }
