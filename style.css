@@ -35,18 +35,11 @@ body {
 
 nav {
     background-color: hsl(0, 0%, 25%);
-
     color: hsl(0, 0%, 75%);
-    /* color:white; */
-
     grid-column: 1/2;
     z-index: 1;
-    padding: var(--outside);
-
-    width: var(--sidebar-min);
+    width: calc(2 * var(--sidebar-min));
     transition: 0.5s ease;
-
-/* opacity: 0.75; */
 }
 
 nav.sidebar-toggle {
@@ -55,7 +48,7 @@ nav.sidebar-toggle {
 
 #hamburger {
     padding: 0;
-    margin-bottom: 16px;
+    margin: var(--outside);
     border: none;
     outline: none;
     color: inherit;
@@ -63,7 +56,6 @@ nav.sidebar-toggle {
     cursor: pointer;
     width: 32px;
     height: 32px;
-
 }
 
 .bar1,
@@ -96,7 +88,6 @@ nav.sidebar-toggle {
 .logo-svg {
     width: 32px;
     height: 32px;
-    /* position: absolute; */
 }
 
 .svg {
@@ -104,19 +95,19 @@ nav.sidebar-toggle {
     height: 32px;
     filter: invert();
     opacity: 0.75;
+    transition: 0.5s ease;
 }
 
 #sidebar {
     position: sticky;
-    top: var(--outside);
+    top: 0;
     left: 0;
     height: min-content;
-    overflow: hidden;
-
     display: grid;
-
-    height: calc(100vh - 2 * var(--outside));
+    height: 100vh;
     align-content: space-between;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 #sidebar ul {
@@ -126,32 +117,48 @@ nav.sidebar-toggle {
     white-space: nowrap;
 }
 
-#sidebar ul li:nth-child(1) {
+#sidebar > ul:last-child > li:last-child  {
+    margin-bottom: var(--outside);
+}
+
+#sidebar div ul li:nth-child(1) a {
     font-size: 1.1875rem;
     font-weight: 700;
 }
 
-#sidebar ul li {
-
-    padding-bottom: 16px;
-    transition: 0.5s ease;
-
+#sidebar ul li a {
     display: flex;
     align-items: center;
+    text-decoration: none;
 }
 
-#sidebar ul li img{
+#sidebar ul li a{
+    padding: 8px var(--outside);   
+}
+
+#sidebar ul li img {
     margin-right: 16px;
 }
 
-#sidebar > ul > li:last-child{
-    padding-bottom: 0;  
+#sidebar ul li a span {
+    color: white;
+    opacity: 0.75;
+    transition: 0.5s ease;
+}
+
+#sidebar ul li:hover span,
+#sidebar ul li:hover img {
+    opacity: 1;
+}
+
+#sidebar ul li{
+    border-left: solid 0px hsl(0, 0%, 25%);
+    transition: 0.1s ease;
 }
 
 #sidebar ul li:hover {
-    /* background-color: red; */
-    color: white;
-    opacity: 1;
+    background-color: hsl(0, 0%, 27.5%);
+    border-left: solid 4px hsl(0, 0%, 50%);
 }
 
 header {
@@ -186,7 +193,6 @@ main {
     border: 1px solid black;
     border-radius: 8px;
     background-color: antiquewhite;
-
     padding: var(--outside);
 }
 
@@ -238,11 +244,6 @@ footer {
 }
 
 @media only screen and (min-width: 1024px) {
-
-    /* #hamburger {
-        display: none;
-    } */
-
     #wrapper.sidebar-toggle {
         grid-template-columns: 20% 4fr;
     }
@@ -254,6 +255,8 @@ footer {
 
     nav.sidebar-toggle {
         width: calc(100% - 2 * var(--outside));
+        width: 100%;
+
     }
 
     #container {
