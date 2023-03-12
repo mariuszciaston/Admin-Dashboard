@@ -18,36 +18,64 @@
         <nav id="nav">
             <div id="sidebar">
                 <div>
-                    <button id="hamburger">
+                    <button type="button" id="hamburger">
                         <div class="bar1"></div>
                         <div class="bar2"></div>
                         <div class="bar3"></div>
                     </button>
                     <ul>
                         <li><a href=""><img src="icons/logoipsum-225.svg" alt="logo" class="logo-svg"><span>Dashboard</span></a></li>
-                        <li><a href=""><img src="icons/home.svg" alt="home" class="svg"><span>Home</span></a></li>
-                        <li><a href=""><img src="icons/account.svg" alt="profile" class="svg"><span>Profile</span></a></li>
-                        <li><a href=""><img src="icons/message-text.svg" alt="messages" class="svg"><span>Messages</span></a></li>
-                        <li><a href=""><img src="icons/history.svg" alt="history" class="svg"><span>History</span></a></li>
-                        <li><a href=""><img src="icons/format-list-bulleted.svg" alt="tasks" class="svg"><span>Tasks</span></a></li>
-                        <li><a href=""><img src="icons/account-group.svg" alt="communities" class="svg"><span>Communities</span></a></li>
+                        <li><a href=""><img src="icons/home.svg" alt="home" class="svg invert"><span>Home</span></a></li>
+                        <li><a href=""><img src="icons/account.svg" alt="profile" class="svg invert"><span>Profile</span></a></li>
+                        <li><a href=""><img src="icons/message-text.svg" alt="messages" class="svg invert"><span>Messages</span></a></li>
+                        <li><a href=""><img src="icons/history.svg" alt="history" class="svg invert"><span>History</span></a></li>
+                        <li><a href=""><img src="icons/format-list-bulleted.svg" alt="tasks" class="svg invert"><span>Tasks</span></a></li>
+                        <li><a href=""><img src="icons/account-group.svg" alt="communities" class="svg invert"><span>Communities</span></a></li>
                         <!-- <br> -->
                     </ul>
                 </div>
                 <ul>
-                    <li><a href=""><img src="icons/cog.svg" alt="settings" class="svg"><span>Settings</span></a></li>
-                    <li><a href=""><img src="icons/face-agent.svg" alt="support" class="svg"><span>Support</span></a></li>
-                    <li><a href=""><img src="icons/lock.svg" alt="privacy" class="svg privacy-svg"><span>Privacy</span></a></li>
+                    <li><a href=""><img src="icons/cog.svg" alt="settings" class="svg invert"><span>Settings</span></a></li>
+                    <li><a href=""><img src="icons/face-agent.svg" alt="support" class="svg invert"><span>Support</span></a></li>
+                    <li><a href=""><img src="icons/lock.svg" alt="privacy" class="svg privacy-svg invert"><span>Privacy</span></a></li>
                 </ul>
             </div>
         </nav>
         <div id="container">
             <header>
-                HEADER
+                <div class="topbar">
+                    <div class="search-area">
+                        <button type="button" class="magnify"><img src="icons/magnify.svg" alt="magnify" class="svg"></button>
+                        <input type="search" id="search-field" name="search">
+                    </div>
+                    <div class="user-area">
+                        <img src="icons/bell-ring-outline.svg" alt="bell ring" class="svg bell">
+                        <img src="images/lorem-face-6426.jpg" alt="face" class="img">
+                        <span>John Doe</span>
+                    </div>
+                </div>
+                <!-- <div class="welcome-section">
+                    <img src="images/lorem-face-6426.jpg" alt="face" class="img">
+                    <span>Hi there, <br> John Doe (@johnd)</span>
+                    <button type="submit" name="new" class="btn">New</button>
+                    <button type="submit" name="upload" class="btn">Upload</button>
+                    <button type="submit" name="share" class="btn">Share</button>
+                </div> -->
             </header>
-            <main>
+            <!-- <main>
                 <div class="primary">
-                    <div class="card card-1">Pizza ipsum dolor amet spinach platter lasagna, philly chicken steak mozzarella sausage extra sauce deep crust. Large pineapple mozzarella fresh tomatoes hawaiian mayo sausage ricotta. Mayo onions burnt mouth spinach melted cheese bbq sauce platter. Hand tossed garlic garlic sauce platter, stuffed crust burnt mouth Chicago style meatball pizza ricotta mozzarella bbq peppers extra sauce.</div>
+                    <div class="card card-1">
+                        <img src="icons/share-variant-outline.svg" alt="share" class="svg">
+                        <img src="icons/star-plus-outline.svg" alt="star plus" class="svg">
+                        <img src="icons/eye-plus.svg" alt="eye plus" class="svg">
+                       
+                        <img src="images/lorem-face-2119.jpg" alt="face" class="img">
+                        <img src="images/lorem-face-5028.jpg" alt="face" class="img">
+                        <img src="images/lorem-face-5424.jpg" alt="face" class="img">
+                       
+                       
+                        Pizza ipsum dolor amet spinach platter lasagna, philly chicken steak mozzarella sausage extra sauce deep crust. Large pineapple mozzarella fresh tomatoes hawaiian mayo sausage ricotta. Mayo onions burnt mouth spinach melted cheese bbq sauce platter. Hand tossed garlic garlic sauce platter, stuffed crust burnt mouth Chicago style meatball pizza ricotta mozzarella bbq peppers extra sauce.
+                    </div>
                     <div class="card card-2">Broccoli banana peppers extra sauce buffalo sauce mayo thin crust deep crust pie pizza, NY style mushrooms marinara meatball fresh tomatoes. White garlic philly steak chicken wing ricotta. White garlic extra sauce pepperoni stuffed crust white pizza. Bacon & tomato peppers bacon, marinara personal pie sausage green bell peppers steak sauteed onions string cheese platter pizza roll black olives fresh tomatoes.</div>
                     <div class="card card-3">Burnt mouth lasagna hand tossed meatball chicken. Ricotta peppers marinara string cheese, Chicago style burnt mouth red onions. Melted cheese chicken thin crust pineapple spinach bbq sauce beef ranch sausage personal. Peppers mushrooms deep crust pepperoni pan extra cheese melted cheese hawaiian chicken wing garlic parmesan philly chicken white garlic bbq rib. Ricotta hawaiian parmesan pan philly chicken, thin crust banana peppers green bell peppers extra sauce. Pepperoni red onions string cheese green bell peppers peppers pizza lasagna sauteed onions garlic white pizza black olives thin crust beef broccoli. Philly steak red onions mayo, bbq sauce meatball marinara buffalo sauce spinach broccoli banana peppers peppers sauteed onions.</div>
                     <div class="card card-4">Extra sauce green bell peppers Chicago style banana peppers thin crust beef lasagna bianca bbq rib NY style. Marinara pineapple bbq rib, thin crust philly steak extra sauce meatball garlic parmesan melted cheese. Extra cheese broccoli steak bianca pizza roll pan bacon parmesan philly steak. Meatball philly chicken bianca deep crust white pizza pizza roll bacon chicken and bacon pizza bacon & tomato extra cheese thin crust. Meatball spinach thin crust philly steak, party chicken wing pineapple broccoli anchovies personal platter mushrooms onions. Pepperoni bbq rib sauteed onions, buffalo sauce hand tossed stuffed crust white pizza white garlic. Green bell peppers garlic sauce NY style bacon & tomato meatball sausage thin crust chicken wing pizza roll bacon.</div>
@@ -66,7 +94,7 @@
             </main>
             <footer>
                 FOOTER
-            </footer>
+            </footer> -->
         </div>
     </div>
 </body>

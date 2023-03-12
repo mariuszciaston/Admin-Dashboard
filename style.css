@@ -1,9 +1,9 @@
 :root {
-    --sidebar-min: 32px;
-    --sidebar-med: 64px;
+    --min: 16px;
+    --med: 32px;
+    --max: 64px;
 
     --bcg: silver;
-    --outside: 16px;
 }
 
 html {
@@ -14,18 +14,19 @@ body {
     margin: 0;
     font-family: Ubuntu, sans-serif;
     font-size: 1rem;
+    font-weight: 400;
     background-color: var(--bcg);
 }
 
 #wrapper {
     display: grid;
-    grid-template-columns: var(--sidebar-med) 4fr;
+    grid-template-columns: var(--max) 4fr;
     min-height: 100vh;
     transition: 0.5s ease;
 }
 
 #wrapper.sidebar-toggle {
-    grid-template-columns: var(--sidebar-med) 4fr;
+    grid-template-columns: var(--max) 4fr;
 }
 
 #container {
@@ -38,24 +39,24 @@ nav {
     color: hsl(0, 0%, 75%);
     grid-column: 1/2;
     z-index: 1;
-    width: calc(2 * var(--sidebar-min));
+    width: var(--max);
     transition: 0.5s ease;
 }
 
 nav.sidebar-toggle {
-    width: calc(100vw - 2 * var(--outside));
+    width: 100vw;
 }
 
 #hamburger {
     padding: 0;
-    margin: var(--outside);
+    margin: var(--min);
     border: none;
     outline: none;
     color: inherit;
     background: none;
     cursor: pointer;
-    width: 32px;
-    height: 32px;
+    width: var(--med);
+    height: var(--med);
 }
 
 .bar1,
@@ -78,7 +79,7 @@ nav.sidebar-toggle {
 
 .change .bar2 {
     opacity: 0;
-    transform: translate(-32px, 0);
+    transform: translate(-var(--med), 0);
 }
 
 .change .bar3 {
@@ -86,16 +87,19 @@ nav.sidebar-toggle {
 }
 
 .logo-svg {
-    width: 32px;
-    height: 32px;
+    width: var(--med);
+    height: var(--med);
 }
 
 .svg {
-    width: 32px;
-    height: 32px;
-    filter: invert();
-    opacity: 0.75;
+    width: var(--med);
+    height: var(--med);
     transition: 0.5s ease;
+    opacity: 0.75;
+}
+
+.invert {
+    filter: invert();
 }
 
 #sidebar {
@@ -117,8 +121,8 @@ nav.sidebar-toggle {
     white-space: nowrap;
 }
 
-#sidebar > ul:last-child > li:last-child  {
-    margin-bottom: var(--outside);
+#sidebar>ul:last-child>li:last-child {
+    margin-bottom: var(--min);
 }
 
 #sidebar div ul li:nth-child(1) a {
@@ -132,18 +136,17 @@ nav.sidebar-toggle {
     text-decoration: none;
 }
 
-#sidebar ul li a{
-    padding: 8px var(--outside);   
+#sidebar ul li a {
+    padding: 8px var(--min);
 }
 
 #sidebar ul li img {
-    margin-right: 16px;
+    margin-right: var(--min);
 }
 
 #sidebar ul li a span {
     color: white;
     opacity: 0.75;
-    transition: 0.5s ease;
 }
 
 #sidebar ul li:hover span,
@@ -151,7 +154,7 @@ nav.sidebar-toggle {
     opacity: 1;
 }
 
-#sidebar ul li{
+#sidebar ul li {
     border-left: solid 0px hsl(0, 0%, 25%);
     transition: 0.1s ease;
 }
@@ -162,29 +165,185 @@ nav.sidebar-toggle {
 }
 
 header {
-    background-color: yellow;
-    grid-column: 1/-1;
-    padding: var(--outside);
+    background-color: white;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: min-content min-content;
+    font-weight: 500;
 }
+
+.topbar {
+    display: grid;
+    grid-template-columns: 1fr min-content;
+    grid-column: 1/-1;
+    margin: var(--min) 0;
+}
+
+.topbar .svg {
+    padding: 8px;
+    margin: 8px;
+    border-radius: 50px;
+    opacity: 1;
+}
+
+.topbar .svg:hover {
+    opacity: 1;
+    background-color: hsl(0, 0%, 87.5%);
+}
+
+.search-area {
+    display: grid;
+    grid-template-columns: min-content minmax(128px, 1fr);
+    align-items: center;
+    grid-column: 1/-1;
+}
+
+button.magnify {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    height: var(--max);
+}
+
+#search-field {
+    border: none;
+    border-radius: var(--med);
+    background-color: hsl(0, 0%, 87.5%);
+    height: 2rem;
+    font-size: inherit;
+    padding: 12px;
+    font-weight: inherit;
+    height: var(--med);
+    margin-right: var(--min);
+    border: solid 2px transparent;
+    transition: 0.5s ease;
+}
+
+#search-field:focus {
+    border: solid 2px black;
+    outline: black;
+    background-color: white;
+    box-sizing: border-box;
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    height: 1rem;
+    width: 1rem;
+    border-radius: 50em;
+    background: url(https://pro.fontawesome.com/releases/v5.10.0/svgs/solid/times-circle.svg) no-repeat 50% 50%;
+    background-size: contain;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.5s ease;
+}
+
+input[type="search"]:focus::-webkit-search-cancel-button {
+    opacity: 1;
+    pointer-events: all;
+    cursor: pointer;
+}
+
+input[type="search"].dark::-webkit-search-cancel-button {
+    filter: invert(1);
+}
+
+.user-area {
+    display: grid;
+    grid-template-columns: repeat(3, max-content);
+    align-items: center;
+    grid-column: 1/-1;
+}
+
+.bell:hover,
+.img {
+    cursor: pointer;
+}
+
+.img {
+    width: var(--max);
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    box-sizing: border-box;
+    transition: 0.5s ease
+}
+
+.img:hover {
+    border: 2px solid black;
+}
+
+.user-area>span {
+    margin: 0 var(--min);
+}
+
+
+
+
+
+
+
+
+
+
+/* .btn{
+border: none;
+border-radius: var(--med);
+background-color:blueviolet;
+color: white;
+padding: 16px;
+width: 128px;
+font-weight: 500;
+font-size: inherit;
+font-family: inherit;
+} */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 main {
     background-color: var(--bcg);
-    padding: var(--outside);
+    padding: var(--min);
     display: grid;
     grid-template-columns: repeat(8, 1fr);
-    gap: var(--outside);
+    gap: var(--min);
 }
 
 .primary {
     display: grid;
     grid-column: 1 / -1;
-    gap: var(--outside);
+    gap: var(--min);
 }
 
 .secondary {
     display: grid;
     grid-column: 1 / -1;
-    gap: var(--outside);
+    gap: var(--min);
 }
 
 .card,
@@ -193,14 +352,18 @@ main {
     border: 1px solid black;
     border-radius: 8px;
     background-color: antiquewhite;
-    padding: var(--outside);
+    padding: var(--min);
 }
 
 footer {
     background-color: grey;
     grid-column: 1/-1;
-    padding: var(--outside);
+    padding: var(--min);
 }
+
+
+
+
 
 @media only screen and (min-width: 321px) {
     nav.sidebar-toggle {
@@ -211,6 +374,20 @@ footer {
 @media only screen and (min-width: 512px) {
     header {
         grid-column: 1/-1;
+    }
+
+    .search-area {
+        grid-column: 1 / 2;
+    }
+
+    .search-area {
+        display: grid;
+        grid-template-columns: min-content minmax(128px, 320px);
+    }
+
+
+    .user-area {
+        grid-column: 2 /3;
     }
 
     main {
@@ -254,7 +431,7 @@ footer {
     }
 
     nav.sidebar-toggle {
-        width: calc(100% - 2 * var(--outside));
+        width: calc(100% - var(--med));
         width: 100%;
 
     }
@@ -264,4 +441,5 @@ footer {
         margin-left: 0;
         z-index: 1;
     }
+
 }
