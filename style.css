@@ -112,6 +112,13 @@ nav.sidebar-toggle {
     align-content: space-between;
     overflow-y: scroll;
     overflow-x: hidden;
+
+    -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */ 
+}
+
+#sidebar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
 }
 
 #sidebar ul {
@@ -147,6 +154,7 @@ nav.sidebar-toggle {
 #sidebar ul li a span {
     color: white;
     opacity: 0.75;
+/* font-size: 1.25rem; */
 }
 
 #sidebar ul li:hover span,
@@ -170,13 +178,15 @@ header {
     grid-template-columns: 1fr;
     grid-template-rows: min-content min-content;
     font-weight: 500;
+
+    gap: var(--min);
+    padding: var(--min);
 }
 
 .topbar {
     display: grid;
-    grid-template-columns: 1fr min-content;
-    grid-column: 1/-1;
-    margin: var(--min) 0;
+    grid-template-columns: 1fr;
+    gap: var(--min);
 }
 
 .topbar .svg {
@@ -193,12 +203,12 @@ header {
 
 .search-area {
     display: grid;
-    grid-template-columns: min-content minmax(128px, 1fr);
+    grid-template-columns: min-content 1fr;
     align-items: center;
-    grid-column: 1/-1;
 }
 
-button.magnify {
+button.magnify,
+button.bell {
     background: none;
     color: inherit;
     border: none;
@@ -256,16 +266,10 @@ input[type="search"].dark::-webkit-search-cancel-button {
     display: grid;
     grid-template-columns: repeat(3, max-content);
     align-items: center;
-    grid-column: 1/-1;
-}
-
-.bell:hover,
-.img {
-    cursor: pointer;
 }
 
 .img {
-    width: var(--max);
+    width: 64px;
     aspect-ratio: 1/1;
     border-radius: 50%;
     border: 2px solid transparent;
@@ -273,53 +277,73 @@ input[type="search"].dark::-webkit-search-cancel-button {
     transition: 0.5s ease
 }
 
-.img:hover {
+.img:not(.large):hover {
     border: 2px solid black;
+    cursor: pointer;
 }
 
 .user-area>span {
     margin: 0 var(--min);
+    font-size: 1.25rem;
+}
+
+.welcome-section {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--min);
+}
+
+.greeting-area {
+    display: grid;
+    grid-template-columns: min-content min-content;
+    align-items: center;
+    display: none;
+}
+
+.greeting-area>span {
+    white-space: nowrap;
+    line-height: 1.75rem;
+}
+
+.large {
+    width: 96px;
+    margin: 0 16px;
+}
+
+.bigger{
+    font-size: 1.5rem;
+}
+
+.buttons-area {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(1px, 128px));
+    align-content: center;
+    justify-content: right;
+    gap: var(--min);
+    margin: 16px;
+    justify-content: left;
+}
+
+.btn {
+    border: none;
+    border-radius: var(--med);
+    background-color: blueviolet;
+    color: white;
+    font-weight: 500;
+    font-size: inherit;
+    font-family: inherit;
+    padding: 12px;
+    height: 48px;
+}
+
+.btn:hover{
+    cursor: pointer;
+    opacity: 0.75;
 }
 
 
 
-
-
-
-
-
-
-
-/* .btn{
-border: none;
-border-radius: var(--med);
-background-color:blueviolet;
-color: white;
-padding: 16px;
-width: 128px;
-font-weight: 500;
-font-size: inherit;
-font-family: inherit;
-} */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* ----------------------------------------------------------- */
 
 
 
@@ -364,30 +388,39 @@ footer {
 
 
 
-
 @media only screen and (min-width: 321px) {
     nav.sidebar-toggle {
         width: 256px;
     }
 }
 
-@media only screen and (min-width: 512px) {
+@media only screen and (min-width: 640px) {
+
+    .welcome-section{
+    grid-template-columns:  1fr;
+    }
+
+    .greeting-area{
+        display: grid;
+    }
+
     header {
         grid-column: 1/-1;
     }
 
+    .topbar{
+        grid-template-columns: minmax(128px, 448px) 1fr;
+        gap: 0;
+        
+    }
     .search-area {
+        grid-template-columns: min-content minmax(128px, 384px);
         grid-column: 1 / 2;
     }
 
-    .search-area {
-        display: grid;
-        grid-template-columns: min-content minmax(128px, 320px);
-    }
-
-
     .user-area {
         grid-column: 2 /3;
+        justify-content: right;
     }
 
     main {
@@ -410,6 +443,15 @@ footer {
 }
 
 @media only screen and (min-width: 768px) {
+
+    .welcome-section{
+        grid-template-columns:  min-content 1fr;
+        }
+
+    .buttons-area {
+        justify-content: right;
+    }
+
     .primary {
         grid-column: 1 / span 6;
     }
@@ -441,5 +483,4 @@ footer {
         margin-left: 0;
         z-index: 1;
     }
-
 }
