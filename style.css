@@ -41,7 +41,6 @@ nav {
     z-index: 1;
     width: var(--max);
     transition: 0.5s ease;
-
 }
 
 nav.sidebar-toggle {
@@ -80,7 +79,7 @@ nav.sidebar-toggle {
 
 .change .bar2 {
     opacity: 0;
-    transform: translate(-var(--med), 0);
+    transform: translate(-48px, 0);
 }
 
 .change .bar3 {
@@ -120,7 +119,7 @@ nav.sidebar-toggle {
     /* Firefox */
 }
 
-#sidebar > div {
+#sidebar>div {
     display: grid;
     gap: 8px;
     transition: 0.5s ease;
@@ -164,7 +163,6 @@ nav.sidebar-toggle {
 #sidebar ul li a span {
     color: white;
     opacity: 0.75;
-    /* font-size: 1.25rem; */
 }
 
 #sidebar ul li:hover span,
@@ -349,17 +347,12 @@ input[type="search"].dark::-webkit-search-cancel-button {
     opacity: 0.75;
 }
 
-
-
-/* ----------------------------------------------------------- */
-
 main {
     background-color: var(--bcg);
     padding: var(--min);
     display: grid;
     grid-template-columns: repeat(8, 1fr);
     gap: var(--min);
-
 }
 
 .primary {
@@ -386,10 +379,39 @@ main {
 }
 
 footer {
-    background-color: grey;
+    background-color: white;
     grid-column: 1/-1;
-    padding: var(--min);
+    padding: var(--min) var(--med);
     align-self: flex-end;
+}
+
+footer p {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 0.875rem;
+    margin: 0;
+}
+
+footer p span {
+    display: flex;
+    align-items: center;
+    height: 2.125rem;
+    white-space: nowrap;
+}
+
+footer p .emoji {
+    font-size: 1.625rem;
+}
+
+.fa-github {
+    color: black;
+    opacity: 75%;
+    transition: transform 0.3s ease-in-out;
+}
+
+.fa-github:hover {
+    opacity: 100%;
+    transform: rotate(360deg) scale(1.2);
 }
 
 @media only screen and (min-width: 321px) {
@@ -400,7 +422,7 @@ footer {
 
 @media only screen and (min-width: 640px) {
 
-    #sidebar > div {
+    #sidebar>div {
         display: grid;
         gap: 24px;
     }
