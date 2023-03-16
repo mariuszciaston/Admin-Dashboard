@@ -16,9 +16,9 @@ body {
     background-color: silver;
 }
 
-a{
-text-decoration: none;
-color: black;
+a {
+    text-decoration: none;
+    color: black;
 }
 
 
@@ -52,15 +52,28 @@ nav.sidebar-toggle {
 }
 
 #hamburger {
-    padding: 0;
-    margin: var(--med) var(--min);
     border: none;
     outline: none;
     color: inherit;
     background: none;
     cursor: pointer;
-    width: var(--med);
-    height: var(--med);
+    padding: 8px;
+    margin: 24px 8px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50px;
+    transition: 0.5s ease;
+}
+
+#hamburger:hover {
+    background-color: hsl(0, 0%, 27.5%)
+}
+
+
+#hamburger:hover .bar1,
+#hamburger:hover .bar2,
+#hamburger:hover .bar3 {
+    background-color: white;
 }
 
 .bar1,
@@ -148,6 +161,7 @@ nav.sidebar-toggle {
 #sidebar div ul li:nth-child(1) a {
     font-size: 1.1875rem;
     font-weight: 700;
+    font-size: 1.5rem;
 }
 
 #sidebar ul li a {
@@ -167,6 +181,7 @@ nav.sidebar-toggle {
 #sidebar ul li a span {
     color: white;
     opacity: 0.75;
+    transition: 0.5s ease;
 }
 
 #sidebar ul li:hover span,
@@ -201,16 +216,25 @@ header {
 }
 
 .topbar .svg {
+    opacity: 1;
     padding: 8px;
     margin: 8px;
     border-radius: 50px;
     opacity: 1;
 }
 
-.topbar .svg:hover {
+.card .svg {
+    opacity: 1;
+    padding: 8px;
+    margin: 0;
+    border-radius: 50px;
+    opacity: 1;
+}
+
+.topbar .svg:hover,
+.card .svg:hover {
     opacity: 1;
     background-color: hsl(0, 0%, 87.5%);
-    color: hsl
 }
 
 .search-area {
@@ -220,7 +244,10 @@ header {
 }
 
 button.magnify,
-button.bell {
+button.bell,
+button.star,
+button.eye,
+button.share {
     background: none;
     color: inherit;
     border: none;
@@ -228,7 +255,17 @@ button.bell {
     font: inherit;
     cursor: pointer;
     outline: inherit;
+}
+
+button.magnify,
+button.bell {
     height: var(--max);
+}
+
+button.star,
+button.eye,
+button.share {
+    height: 48px;
 }
 
 #search-field {
@@ -338,7 +375,7 @@ input[type="search"].dark::-webkit-search-cancel-button {
 .btn {
     border: none;
     border-radius: var(--med);
-    background-color: blueviolet;
+    background-color: #2575CE;
     color: white;
     font-weight: 500;
     font-size: inherit;
@@ -377,13 +414,18 @@ h1 {
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
 
+h2 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0 0 0.25rem 0;
+}
+
 .secondary {
     display: grid;
     grid-column: 1 / -1;
     gap: var(--min);
-    /* grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); */
-
-    align-items: flex-start;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
 
 .card,
@@ -394,38 +436,60 @@ h1 {
     padding: var(--med);
 }
 
+.card {
+    border-left: 8px solid #F8728F;
+    padding: var(--med) var(--med) 24px var(--med);
+    gap: var(--min);
+    transition: 0.2s ease;
+}
+
+.card:hover {
+    transform: scale(102.5%);
+}
+
+.card p {
+    margin: 0;
+    color: grey;
+}
+
+.options {
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: right;
+    gap: var(--min);
+    align-content: end;
+}
+
 h3 {
     font-size: 1rem;
     margin: 0 0 0.25rem 0;
-    color: black;
 }
 
 .announcements {
     display: grid;
     gap: var(--min);
-
     font-size: 0.875rem;
-    color: grey
+    color: grey;
 }
-
 
 hr {
     width: 100%;
     margin: 1rem 0;
     border: solid 1px hsl(0, 0%, 87.5%)
 }
+
 .trending {
     display: grid;
     gap: var(--min);
+    align-content: flex-start;
 }
 
-.trend{
+.trend {
     display: grid;
     gap: var(--min);
-  
 }
 
-.trend-item{
+.trend-item {
     display: grid;
     gap: var(--min);
     grid-auto-flow: column;
@@ -433,14 +497,13 @@ hr {
     align-items: center;
 }
 
-.trend-item > p{
+.trend-item>p {
     margin: 0;
 }
-.trend-item > p > span{
-color: grey;
+
+.trend-item>p>span {
+    color: grey;
 }
-
-
 
 footer {
     background-color: white;
@@ -485,7 +548,6 @@ footer p .emoji {
 }
 
 @media only screen and (min-width: 640px) {
-
     #sidebar>div {
         display: grid;
         gap: 24px;
@@ -506,7 +568,6 @@ footer p .emoji {
     .topbar {
         grid-template-columns: minmax(128px, 448px) 1fr;
         gap: 0;
-
     }
 
     .search-area {
@@ -522,24 +583,6 @@ footer p .emoji {
     main {
         grid-column: 1/-1;
     }
-
-
-    .primary {
-        display: grid;
-        gap: var(--min);
-
-    /* grid-column: 1 / span 4; */
-
-    }
-
-    .secondary {
-        display: grid;
-        gap: var(--min);
-
-    /* grid-column: span 4 / -1; */
-
-    }
-
 }
 
 @media only screen and (min-width: 768px) {
@@ -552,30 +595,10 @@ footer p .emoji {
         justify-content: right;
     }
 
-.primary{
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-
-}
-
-/*     
     .primary {
-     
-
-    grid-column: 1 / span 5;
-
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     }
-
-    .secondary {
-       
-
-    grid-column: span 3 / -1;
-
-    } */
-
 }
-
-
-
 
 @media only screen and (min-width: 1024px) {
     #wrapper.sidebar-toggle {
@@ -608,14 +631,14 @@ footer p .emoji {
     }
 }
 
-
 @media only screen and (min-width: 1600px) {
     .primary {
-    
         grid-column: 1 / span 6;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     }
 
     .secondary {
         grid-column: span 2 / -1;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     }
 }
