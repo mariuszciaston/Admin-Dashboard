@@ -2,8 +2,6 @@
     --min: 16px;
     --med: 32px;
     --max: 64px;
-
-    --bcg: silver;
 }
 
 html {
@@ -12,11 +10,17 @@ html {
 
 body {
     margin: 0;
-    font-family: Ubuntu, sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 1rem;
     font-weight: 400;
-    background-color: var(--bcg);
+    background-color: silver;
 }
+
+a{
+text-decoration: none;
+color: black;
+}
+
 
 #wrapper {
     display: grid;
@@ -177,7 +181,7 @@ nav.sidebar-toggle {
 
 #sidebar ul li:hover {
     background-color: hsl(0, 0%, 27.5%);
-    border-left: solid 4px hsl(0, 0%, 50%);
+    border-left: solid 4px grey
 }
 
 header {
@@ -206,6 +210,7 @@ header {
 .topbar .svg:hover {
     opacity: 1;
     background-color: hsl(0, 0%, 87.5%);
+    color: hsl
 }
 
 .search-area {
@@ -340,6 +345,7 @@ input[type="search"].dark::-webkit-search-cancel-button {
     font-family: inherit;
     padding: auto;
     height: 48px;
+    transition: 0.5s ease;
 }
 
 .btn:hover {
@@ -348,8 +354,8 @@ input[type="search"].dark::-webkit-search-cancel-button {
 }
 
 main {
-    background-color: var(--bcg);
-    padding: var(--min);
+    background-color: silver;
+    padding: var(--min) var(--min) var(--med) var(--min);
     display: grid;
     grid-template-columns: repeat(8, 1fr);
     gap: var(--min);
@@ -360,19 +366,6 @@ h1 {
     font-size: 1.5rem;
     font-weight: 500;
     margin-bottom: 0;
-}
-
-h1.projects {
-    display: grid;
-    grid-column: 1 / -1;
-}
-
-h1.announcements {
-    display: grid;
-    grid-column: 1 / -1;
-}
-
-h1.trending {
     display: grid;
     grid-column: 1 / -1;
 }
@@ -388,17 +381,66 @@ h1.trending {
     display: grid;
     grid-column: 1 / -1;
     gap: var(--min);
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    /* grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); */
+
+    align-items: flex-start;
 }
 
 .card,
 .misc {
     display: grid;
-    border: 1px solid black;
     border-radius: 8px;
     background-color: white;
-    padding: var(--min);
+    padding: var(--med);
 }
+
+h3 {
+    font-size: 1rem;
+    margin: 0 0 0.25rem 0;
+    color: black;
+}
+
+.announcements {
+    display: grid;
+    gap: var(--min);
+
+    font-size: 0.875rem;
+    color: grey
+}
+
+
+hr {
+    width: 100%;
+    margin: 1rem 0;
+    border: solid 1px hsl(0, 0%, 87.5%)
+}
+.trending {
+    display: grid;
+    gap: var(--min);
+}
+
+.trend{
+    display: grid;
+    gap: var(--min);
+  
+}
+
+.trend-item{
+    display: grid;
+    gap: var(--min);
+    grid-auto-flow: column;
+    grid-template-columns: min-content;
+    align-items: center;
+}
+
+.trend-item > p{
+    margin: 0;
+}
+.trend-item > p > span{
+color: grey;
+}
+
+
 
 footer {
     background-color: white;
@@ -485,12 +527,19 @@ footer p .emoji {
     .primary {
         display: grid;
         gap: var(--min);
+
+    /* grid-column: 1 / span 4; */
+
     }
 
     .secondary {
         display: grid;
         gap: var(--min);
+
+    /* grid-column: span 4 / -1; */
+
     }
+
 }
 
 @media only screen and (min-width: 768px) {
@@ -503,45 +552,70 @@ footer p .emoji {
         justify-content: right;
     }
 
+.primary{
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+
 }
+
+/*     
+    .primary {
+     
+
+    grid-column: 1 / span 5;
+
+    }
+
+    .secondary {
+       
+
+    grid-column: span 3 / -1;
+
+    } */
+
+}
+
+
+
 
 @media only screen and (min-width: 1024px) {
     #wrapper.sidebar-toggle {
         grid-template-columns: 20% 4fr;
     }
-    
+
     nav {
         width: unset;
         transition: none;
     }
-    
+
     nav.sidebar-toggle {
         width: 100%;
-        
     }
-    
+
     #container {
         position: relative;
         margin-left: 0;
         z-index: 1;
     }
-    
+
     .primary {
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        grid-column: 1 / span 6;
+        grid-column: 1 / span 5;
     }
 
     .secondary {
         grid-template-columns: 1fr;
-        grid-column: span 2 / -1;
+        grid-column: span 3 / -1;
     }
-
 }
 
-@media only screen and (min-width: 1280px) {
-    .secondary {
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+
+@media only screen and (min-width: 1600px) {
+    .primary {
     
+        grid-column: 1 / span 6;
     }
 
+    .secondary {
+        grid-column: span 2 / -1;
+    }
 }
