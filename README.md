@@ -1,4 +1,4 @@
-# Admin-Dashboard
+# Admin Dashboard
 
 Features:<br>
 • Responsive design based on Grid<br>
