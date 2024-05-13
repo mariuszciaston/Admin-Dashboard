@@ -182,8 +182,13 @@ nav.sidebar-toggle {
 	transition: 0.5s ease;
 }
 
+#sidebar > div > ul > li.active > a > span {
+	opacity: 1;
+}
+
 #sidebar ul li:hover span,
-#sidebar ul li:hover img {
+#sidebar ul li:hover img,
+.active {
 	opacity: 1;
 }
 
@@ -192,7 +197,8 @@ nav.sidebar-toggle {
 	transition: 0.1s ease;
 }
 
-#sidebar ul li:hover {
+#sidebar ul li:hover,
+.active {
 	background-color: hsl(0, 0%, 27.5%);
 	border-left: solid 4px grey;
 }
@@ -374,6 +380,7 @@ input[type='search'].dark::-webkit-search-cancel-button {
 	border: none;
 	border-radius: var(--med);
 	background-color: #2575ce;
+
 	color: white;
 	font-weight: 500;
 	font-size: inherit;
@@ -437,7 +444,18 @@ h2 {
 }
 
 .card {
-	border-left: 8px solid #f8728f;
+	/* border-left: 8px solid #f8728f; */
+	/* border-left: 8px solid #2575ce; */
+
+	/* border-left: 8px solid hsl(0, 0%, 50%); */
+	/* border-left: 8px solid hsl(212, 44%, 48%); */
+
+	border-left: 8px solid hsl(212, 70%, 48%);
+
+	/* border-left: 8px solid hsl(162, 80%, 45%); */
+
+	/* background-color: #2575ce; */
+
 	padding: var(--med) var(--med) 24px var(--med);
 	gap: var(--min);
 	transition: 0.2s ease;
