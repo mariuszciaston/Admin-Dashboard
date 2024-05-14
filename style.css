@@ -127,11 +127,8 @@ nav.sidebar-toggle {
 	align-content: space-between;
 	overflow-y: scroll;
 	overflow-x: hidden;
-
 	-ms-overflow-style: none;
-	/* IE and Edge */
 	scrollbar-width: none;
-	/* Firefox */
 }
 
 #sidebar > div {
@@ -142,7 +139,6 @@ nav.sidebar-toggle {
 
 #sidebar::-webkit-scrollbar {
 	display: none;
-	/* Chrome, Safari and Opera */
 }
 
 #sidebar ul {
@@ -444,18 +440,7 @@ h2 {
 }
 
 .card {
-	/* border-left: 8px solid #f8728f; */
-	/* border-left: 8px solid #2575ce; */
-
-	/* border-left: 8px solid hsl(0, 0%, 50%); */
-	/* border-left: 8px solid hsl(212, 44%, 48%); */
-
 	border-left: 8px solid hsl(212, 70%, 48%);
-
-	/* border-left: 8px solid hsl(162, 80%, 45%); */
-
-	/* background-color: #2575ce; */
-
 	padding: var(--med) var(--med) 24px var(--med);
 	gap: var(--min);
 	transition: 0.2s ease;
@@ -463,6 +448,7 @@ h2 {
 
 .card:hover {
 	transform: scale(102.5%);
+	cursor: pointer;
 }
 
 .card p {
@@ -551,7 +537,7 @@ footer p .emoji {
 .fa-github {
 	color: black;
 	opacity: 75%;
-	transition: transform 0.3s ease-in-out;
+	transition: transform 0.5s ease-in-out;
 }
 
 .fa-github:hover {
