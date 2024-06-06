@@ -4,5 +4,6 @@ Features:<br>
 • Responsive design based on Grid<br>
 • Smooth transitions<br>
 
-[Live Demo](https://mariuszciaston.github.io/Admin-Dashboard/) :point_left:
+[Live Demo](https://mariuszciaston.github.io/Admin-Dashboard/) :point_left: <br><br>
 
+![Admin-Dashboard.png](Admin-Dashboard.png)
